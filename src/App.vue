@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <span>{{response.message}}</span>
+    <li v-for="res in response" v-bind:key="res.id">
+      {{ res.username }} : {{ res.password }}
+    </li>
   </div>
 </template>
 
@@ -19,7 +21,8 @@ export default {
   },
   methods: {
     load(){
-        axios.get(`http://localhost:${port}/`).then(res => {
+        axios.get(`http://localhost:${port}/users
+        `).then(res => {
         this.response = res.data
       }).catch ((err) => {
         this.response = err.message
