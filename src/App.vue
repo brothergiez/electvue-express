@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
     <li v-for="res in response" v-bind:key="res.id">
       {{ res.username }} : {{ res.password }}
     </li>
-=======
-    <span>{{response.message}}</span>
->>>>>>> Initiating commit electvue-express
   </div>
 </template>
 
@@ -25,12 +21,8 @@ export default {
   },
   methods: {
     load(){
-<<<<<<< HEAD
         axios.get(`http://localhost:${port}/users
         `).then(res => {
-=======
-        axios.get(`http://localhost:${port}/`).then(res => {
->>>>>>> Initiating commit electvue-express
         this.response = res.data
       }).catch ((err) => {
         this.response = err.message
