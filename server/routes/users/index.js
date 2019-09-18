@@ -1,3 +1,4 @@
 const userPost = require('./userPost');
 const usersGet = require('./usersGet');
-module.exports = [usersGet, userPost];
+const login = require('./login');
+module.exports = [usersGet, userPost, login];

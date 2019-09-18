@@ -18,6 +18,17 @@ module.exports = (sequelize, DataType) => {
       validate: {
         notEmpty: true
       }
+    },
+    fullname: {
+      type: DataType.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true
+      }
+    },
+    isAdmin: {
+      type: DataType.BOOLEAN,
+      defaultValue: false
     }
   });
 

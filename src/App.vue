@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <li v-for="res in response" v-bind:key="res.id">
-      {{ res.username }} : {{ res.password }}
+      {{ res.username }} : {{ res.fullname }}
     </li>
   </div>
 </template>
