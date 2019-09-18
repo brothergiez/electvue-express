@@ -4,14 +4,43 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>electvue-express</title>
+    <style>
+      body {
+        -ms-overflow-style: scrollbar;
+        margin: 0 !important;
+      }
+      input[type="submit"],
+      input[type="reset"],
+      input[type="button"],
+      input[type="text"],
+      button,
+      textarea {
+        -webkit-app-region: no-drag;
+      }
+      .app-container > div {
+        -webkit-app-region: no-drag;
+      }
+      .title-bar-customs{
+        -webkit-app-region:drag;
+        padding: 5px;
+        width: 100%;
+        text-align: center;
+        height: 30px;
+        background-color: #272627;
+        color: #fff;
+        font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 12px;
+      }
+    </style>
   </head>
   <body>
+    <div id="title-bar" class="title-bar-customs">
+      <div id="title">Free POS 1.0</div>
+    </div>
     <noscript>
       <strong>We're sorry but electvue-express doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app" class="app-container"></div>
   </body>
 </html>

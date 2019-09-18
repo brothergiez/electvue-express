@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 router.post('/users', async (req, res) => {
@@ -22,13 +23,21 @@ router.post('/users', async (req, res) => {
       isAdmin
     });
     
+    const token = jwt.sign(
+      {
+        id: user.id,
+        isAdmin: user.isAdmin
+      },
+      process.env.JWT_PRIVATE_KEY
+    );
+
     user = _.pick(user, [
       'fullname',
       'username',
       'createdAt'
     ]);
 
-    res.send(user);
+    res.send({ ...user, token });
   } catch (err) {
     res.status(412).send({ error: err.message });
   }
