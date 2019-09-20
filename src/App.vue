@@ -4,7 +4,7 @@
 
       <div class="title">
         <img src="./assets/pos.png">
-        <div class="md-title">Free POS </div>
+        <div class="md-title">Free POS v.1.0</div>
         <!-- <div class="md-body-1">Build beautiful apps with Material Design and Vue.js</div> -->
       </div>
 
@@ -57,12 +57,12 @@ export default {
         }
         try {
           const { data } = await axios.post('http://localhost:4142/login', params);
-          alert(`Hai ${data.fullname}... login Kamu berhasil`);
+          alert(`Token kamu ${data.token}`);
         }catch(e){
-          alert(e.message);
+          alert(e.response.data.message);
         }
       } else {
-        console.log("A username and password must be present");
+        alert("A username and password must be present");
       }
     }
   }

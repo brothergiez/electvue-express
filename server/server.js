@@ -7,6 +7,7 @@ class App {
     this.express = express();
     this.middleware();
     this.routes();
+    this.errorHandlerMdw();
   }
 
   middleware() {
@@ -16,6 +17,19 @@ class App {
     this.express.locals = { ...this.express.locals, db: dbCon() };
     this.express.locals.db.sequelize.sync();
     require('./initRoutes')(this.express);
+  }
+
+  errorHandlerMdw() {
+    this.express.use((err, req, res, next) => {
+      const { start, httpStatus, message, previousError, stack } = err;
+
+      res.status(httpStatus || 406).json({
+        status: false,
+        code: httpStatus || 406,
+        message,
+        data: previousError
+      });
+    });
   }
 
   async routes() {
