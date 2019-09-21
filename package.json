@@ -8,9 +8,10 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "vue-cli-service build; electron .",
-    "rebuild": "electron-rebuild -f -w sqlite3"
+    "rebuild": "electron-rebuild -f -w sqlite3 @journeyapps/sqlcipher"
   },
   "dependencies": {
+    "@journeyapps/sqlcipher": "^4.0.0",
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "core-js": "^2.6.5",

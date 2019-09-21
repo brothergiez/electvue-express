@@ -6,7 +6,7 @@ class MyError extends Error {
     this.name = this.constructor.name;
     this.code = code;
     this.statusCode = status;
-    this.error = { message, code, status };
+    this.error = code;
     this.message = message;
   }
 };
@@ -26,11 +26,11 @@ module.exports.InvalidTokenError = class extends MyError {
 module.exports.ResponseError = class ResponseError extends MyError {
   constructor(message, code, status) {
     super(message);
-    Error.captureStackTrace(this, this.constructor);
-    this.name = this.constructor.name;
+    // Error.captureStackTrace(this, this.constructor);
+    // this.name = this.constructor.name;
     this.code = code;
     this.statusCode = status;
-    this.error = { message, code, status };
+    this.error = code;
     this.message = message;
   }
 };
