@@ -8,15 +8,20 @@ require('dotenv').config();
 
 class Main {
   static main(app, browserWindow) {
+    Main.bootServer();
     Main.BrowserWindow = browserWindow;
     Main.application = app;
     Main.application.on('ready', Main.onReady);
     Main.application.on('activate', Main.onActivate);
-    Main.bootServer();
   }
 
   static onReady() {
-    Main.mainWindow = new Main.BrowserWindow({ width: 800, height: 600 });
+    Main.mainWindow = new Main.BrowserWindow({
+      width: 960,
+      height: 700,
+      titleBarStyle: 'hidden',
+      frame: false
+    });
     Main.mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
@@ -24,8 +29,10 @@ class Main {
         slashes: true
       })
     );
+    Main.mainWindow.maximize();
     Main.mainWindow.webContents.openDevTools();
     Main.mainWindow.on('closed', Main.onClose);
+    
   }
 
   static onActivate() {
@@ -34,7 +41,6 @@ class Main {
     }
   }
   static onClose() {
-    // Dereference the window object.
     Main.mainWindow = null;
   }
   static bootServer() {
