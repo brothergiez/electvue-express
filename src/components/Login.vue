@@ -4,7 +4,7 @@
 
       <div class="title">
         <img src="../assets/pos.png">
-        <div class="md-title">Free POS v.1.0</div>
+        <div class="md-title">Free POS v.1.0.0</div>
       </div>
 
       <div class="form">
@@ -30,24 +30,40 @@
 
     </md-content>
     <div class="background" />
+    <SnackBar v-bind:snackBarProps='snackBarProps' />
   </div>
 </template>
 
 <script>
+import SnackBar from './reusable/snackbar';
 const axios = require('axios');
 
 export default {
   name: "Login",
+  components: {
+    SnackBar
+  },
   data() {
     return {
       loading: false,
       login: {
         username: "",
         password: ""
+      },
+      snackBarProps: {
+        showSnackbar: false,
+        position: 'center',
+        duration: 4000,
+        isInfinity: false,
+        message: 'No Connection'
       }
     };
   },
   methods: {
+    createSnackbar(message){
+      this.snackBarProps.message = message
+      this.snackBarProps.showSnackbar = true;
+    },
     async auth() {
       if(this.login.username != "" && this.login.password != "") {
         const params = {
@@ -56,12 +72,12 @@ export default {
         }
         try {
           const { data } = await axios.post('http://localhost:4142/login', params);
-          alert(`Token kamu ${data.token}`);
+          this.createSnackbar(`Login berhasil. Token kamu ${data.token}`);
         }catch(e){
-          alert(e.response.data.message);
+          this.createSnackbar('Username or Password did not match');
         }
       } else {
-        alert("A username and password must be present");
+        this.createSnackbar('A username and password must be present');
       }
     }
   }
@@ -74,7 +90,7 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-  height: 100vh;
+  height: 90vh;
   .title {
     text-align: center;
     margin-bottom: 30px;
@@ -93,7 +109,7 @@ export default {
   }
   .background {
     position: absolute;
-    height: 100%;
+    height: 80%;
     width: 100%;
     top: 20;
     bottom: 0;
@@ -114,7 +130,7 @@ export default {
     left: 0;
     right: 0;
     position: absolute;
-    width: 100%;
+    width: 80%;
     height: 100%;
     background: rgba(255, 255, 255, 0.9);
     display: flex;

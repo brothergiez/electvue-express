@@ -18,7 +18,7 @@ class Main {
   static onReady() {
     Main.mainWindow = new Main.BrowserWindow({
       width: 960,
-      height: 700,
+      height: 600,
       titleBarStyle: 'hidden',
       frame: false
     });
