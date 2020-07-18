@@ -18,7 +18,7 @@
     "custom-electron-titlebar": "^3.1.0",
     "dotenv": "^8.1.0",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "sequelize": "^5.18.4",
     "sqlite3": "^4.1.0",
     "vue": "^2.6.10",
