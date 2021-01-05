@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@journeyapps/sqlcipher": "^4.0.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.6",
     "core-js": "^2.6.5",
     "custom-electron-titlebar": "^3.1.0",
